@@ -1,0 +1,456 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainNavigation matches snapshot 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <RNSScreenStack
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <RNSScreen
+      collapsable={false}
+      forwardedRef={[Function]}
+      gestureResponseDistance={
+        {
+          "bottom": -1,
+          "end": -1,
+          "start": -1,
+          "top": -1,
+        }
+      }
+      nativeBackButtonDismissalEnabled={false}
+      onAppear={[Function]}
+      onDisappear={[Function]}
+      onDismissed={[Function]}
+      onHeaderBackButtonClicked={[Function]}
+      onNativeDismissCancelled={[Function]}
+      onTransitionProgress={[Function]}
+      onWillDisappear={[Function]}
+      replaceAnimation="push"
+      stackPresentation="push"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      swipeDirection="horizontal"
+    >
+      <RNSScreenStackHeaderConfig
+        backButtonInCustomView={false}
+        backgroundColor="rgb(255, 255, 255)"
+        color="rgb(0, 122, 255)"
+        direction="ltr"
+        disableBackButtonMenu={false}
+        hidden={true}
+        hideBackButton={false}
+        largeTitleHideShadow={false}
+        title="Home"
+        titleColor="rgb(28, 28, 30)"
+        topInsetEnabled={false}
+        translucent={false}
+      />
+      <View
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column-reverse",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flex": 1,
+              },
+              {
+                "backgroundColor": "rgb(242, 242, 242)",
+              },
+              {
+                "backgroundColor": "#F8F8F8",
+              },
+            ]
+          }
+        >
+          <RCTSafeAreaView
+            style={
+              {
+                "flex": 1,
+                "paddingTop": 0,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flex": 1,
+                  "paddingHorizontal": 24,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "marginTop": 40,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "avenir-bold",
+                      },
+                      {
+                        "fontSize": 25,
+                        "fontWeight": 800,
+                        "lineHeight": 32,
+                      },
+                    ]
+                  }
+                >
+                  Bienvenido de vuelta!
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "avenir",
+                      },
+                      {
+                        "fontSize": 20,
+                        "lineHeight": 27,
+                      },
+                    ]
+                  }
+                >
+                  Leonardo Pesina
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "marginTop": 25,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "avenir-bold",
+                      },
+                      {
+                        "color": "#9B9898",
+                        "fontSize": 18,
+                        "fontWeight": 800,
+                        "lineHeight": 25,
+                      },
+                    ]
+                  }
+                >
+                  TUS PUNTOS
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "paddingTop": 20,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#334FFA",
+                        "borderRadius": 20,
+                        "elevation": 20,
+                        "height": 143,
+                        "marginHorizontal": 53,
+                        "paddingHorizontal": 19,
+                        "paddingVertical": 21,
+                        "shadowColor": "gba(0, 0, 0, 0.5)",
+                        "shadowOffset": {
+                          "height": 4,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.5,
+                        "shadowRadius": 4,
+                        "width": 286,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "avenir-bold",
+                          },
+                          {
+                            "color": "#ffffff",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                        ]
+                      }
+                    >
+                      Diciembre
+                    </Text>
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "avenir-bold",
+                            },
+                            {
+                              "color": "#ffffff",
+                              "fontSize": 32,
+                              "lineHeight": 44,
+                            },
+                          ]
+                        }
+                      >
+                        0.00
+                         pts
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "marginTop": 25,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "avenir-bold",
+                      },
+                      {
+                        "color": "#9B9898",
+                        "fontSize": 18,
+                        "fontWeight": 800,
+                        "lineHeight": 25,
+                      },
+                    ]
+                  }
+                >
+                  TUS MOVIMIENTOS
+                </Text>
+                <RCTScrollView
+                  data={[]}
+                  getItem={[Function]}
+                  getItemCount={[Function]}
+                  keyExtractor={[Function]}
+                  onContentSizeChange={[Function]}
+                  onLayout={[Function]}
+                  onMomentumScrollBegin={[Function]}
+                  onMomentumScrollEnd={[Function]}
+                  onScroll={[Function]}
+                  onScrollBeginDrag={[Function]}
+                  onScrollEndDrag={[Function]}
+                  removeClippedSubviews={false}
+                  renderItem={[Function]}
+                  scrollEventThrottle={50}
+                  stickyHeaderIndices={[]}
+                  style={
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 15,
+                      "marginTop": 20,
+                      "maxHeight": 250,
+                      "padding": 20,
+                    }
+                  }
+                  viewabilityConfigCallbackPairs={[]}
+                >
+                  <View />
+                </RCTScrollView>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginTop": 25,
+                    },
+                    {
+                      "columnGap": 10,
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={false}
+                  >
+                    <View
+                      style={
+                        {
+                          "backgroundColor": "#334FFA",
+                          "borderRadius": 10,
+                          "paddingVertical": 15,
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "avenir-bold",
+                            },
+                            {
+                              "color": "#ffffff",
+                              "textAlign": "center",
+                              "textTransform": "capitalize",
+                            },
+                          ]
+                        }
+                      >
+                        ganados
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "flex": 1,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={false}
+                  >
+                    <View
+                      style={
+                        {
+                          "backgroundColor": "#334FFA",
+                          "borderRadius": 10,
+                          "paddingVertical": 15,
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "avenir-bold",
+                            },
+                            {
+                              "color": "#ffffff",
+                              "textAlign": "center",
+                              "textTransform": "capitalize",
+                            },
+                          ]
+                        }
+                      >
+                        canjeados
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </RCTSafeAreaView>
+        </View>
+      </View>
+    </RNSScreen>
+  </RNSScreenStack>
+</RNCSafeAreaProvider>
+`;

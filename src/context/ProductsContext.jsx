@@ -16,6 +16,7 @@ const ProductsContextProvider = ({ children }) => {
       setProducts(products.data);
     } catch (error) {
       Alert.alert("Oops...", "Hubo un error obteniendo los productos");
+      setProducts([]);
     }
   };
 
