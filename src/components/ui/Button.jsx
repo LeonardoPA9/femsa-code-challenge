@@ -1,7 +1,8 @@
 import { View, Pressable, StyleSheet } from "react-native";
 import { memo } from "react";
 import { GlobalStyles } from "../../utils/constants/colors";
-import AvenirBoldText from "./AvenirBoldText";
+import CustomFontText from "./CustomFontText";
+import { FontNames } from "../../utils/constants/fonts";
 
 const CustomButton = ({ onPress, children }) => {
   return (
@@ -11,7 +12,12 @@ const CustomButton = ({ onPress, children }) => {
         onPress={onPress}
       >
         <View style={button}>
-          <AvenirBoldText style={buttonText}>{children}</AvenirBoldText>
+          <CustomFontText
+            fontName={FontNames["avenir-bold"]}
+            style={buttonText}
+          >
+            {children}
+          </CustomFontText>
         </View>
       </Pressable>
     </View>

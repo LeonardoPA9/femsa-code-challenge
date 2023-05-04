@@ -1,19 +1,20 @@
-import { useContext, useLayoutEffect, useMemo } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import {
   SafeAreaView,
   StyleSheet,
   StatusBar,
   Platform,
   View,
+  Text,
 } from "react-native";
 import { ProductsContext } from "../context/ProductsContext";
 import WelcomeMessage from "../components/MainScreen/WelcomeMessage";
-import PointScore from "../components/MainScreen/PointScore";
-import AvenirBoldText from "../components/ui/AvenirBoldText";
+import MessageCard from "../components/ui/MessageCard";
 import { GlobalStyles } from "../utils/constants/colors";
 import ProductList from "../components/MainScreen/ProductList";
 import Button from "../components/ui/Button";
-import { RouteNames } from "../utils/constants/routes";
+import { primaryTextStyle } from "../utils/constants/fonts";
+import { getResponsiveStyle } from "../utils/helpers/styleHelpers";
 
 const redemptionTypes = Object.freeze({
   redeemed: "redeemed",
@@ -22,9 +23,10 @@ const redemptionTypes = Object.freeze({
 });
 
 const HomeScreen = ({ navigation, route }) => {
-  const { products, getProducts } = useContext(ProductsContext);
+  const { products, getProducts, errorFetchingProducts } =
+    useContext(ProductsContext);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (products.length) return;
     getProducts();
   }, []);
@@ -41,8 +43,8 @@ const HomeScreen = ({ navigation, route }) => {
     [products]
   );
 
-  const goToFilterPage = (redemptionType) => {
-    navigation.navigate(RouteNames.HOME, { redemptionType });
+  const setFilterParam = (redemptionType) => {
+    navigation.setParams({ redemptionType });
   };
 
   const productsFilteredByRedemptionType = useMemo(() => {
@@ -57,33 +59,52 @@ const HomeScreen = ({ navigation, route }) => {
     }
   }, [route.params?.redemptionType, products]);
 
+  const areProductsFiltered = useMemo(
+    () =>
+      [redemptionTypes.notRedeemed, redemptionTypes.redeemed].includes(
+        route.params?.redemptionType
+      ),
+    [route.params?.redemptionType]
+  );
+
+  if (errorFetchingProducts) {
+    return (
+      <SafeAreaView style={AndroidSafeArea}>
+        <View style={sectionContainer}>
+          <MessageCard subtitle="Lo sentimos" mainMessage="Hubo un error" />
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={AndroidSafeArea}>
       <View style={container}>
         <WelcomeMessage username="Leonardo Pesina" />
         <View style={sectionContainer}>
-          <AvenirBoldText style={subtitleText}>TUS PUNTOS</AvenirBoldText>
-          <PointScore timeLapse="Diciembre" score={totalPoints} />
+          <Text style={[primaryTextStyle, subtitleText]}>TUS PUNTOS</Text>
+          <MessageCard
+            subtitle="Diciembre"
+            mainMessage={`${totalPoints.toFixed(2)} pts`}
+          />
         </View>
         <View style={sectionContainer}>
-          <AvenirBoldText style={subtitleText}>TUS MOVIMIENTOS</AvenirBoldText>
+          <Text style={[primaryTextStyle, subtitleText]}>TUS MOVIMIENTOS</Text>
           <ProductList products={productsFilteredByRedemptionType} />
         </View>
         <View style={[sectionContainer, buttonSection]}>
-          {[redemptionTypes.notRedeemed, redemptionTypes.redeemed].includes(
-            route.params?.redemptionType
-          ) ? (
-            <Button onPress={() => goToFilterPage(redemptionTypes.all)}>
+          {areProductsFiltered ? (
+            <Button onPress={() => setFilterParam(redemptionTypes.all)}>
               todos
             </Button>
           ) : (
             <>
               <Button
-                onPress={() => goToFilterPage(redemptionTypes.notRedeemed)}
+                onPress={() => setFilterParam(redemptionTypes.notRedeemed)}
               >
                 ganados
               </Button>
-              <Button onPress={() => goToFilterPage(redemptionTypes.redeemed)}>
+              <Button onPress={() => setFilterParam(redemptionTypes.redeemed)}>
                 canjeados
               </Button>
             </>
@@ -108,17 +129,25 @@ const {
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   container: {
-    paddingHorizontal: 24,
     flex: 1,
+    paddingHorizontal: 24,
   },
   subtitleText: {
-    fontSize: 18,
-    lineHeight: 25,
-    fontWeight: 800,
+    fontSize: getResponsiveStyle("height", {
+      xs: 15,
+      lg: 18,
+    }),
+    lineHeight: getResponsiveStyle("height", {
+      xs: 20,
+      lg: 25,
+    }),
     color: GlobalStyles.text.secondary,
   },
   sectionContainer: {
-    marginTop: 25,
+    marginTop: getResponsiveStyle("height", {
+      xs: 15,
+      lg: 25,
+    }),
   },
   buttonSection: {
     flexDirection: "row",

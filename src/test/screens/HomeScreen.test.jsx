@@ -30,7 +30,7 @@ describe("HomeScreen", () => {
       >
         <NavigationContainer>
           <HomeScreen
-            navigation={{ navigate: jest.fn() }}
+            navigation={{ setParams: jest.fn() }}
             route={{ params: {} }}
           />
         </NavigationContainer>
@@ -51,7 +51,7 @@ describe("HomeScreen", () => {
       >
         <NavigationContainer>
           <HomeScreen
-            navigation={{ navigate: jest.fn() }}
+            navigation={{ setParams: jest.fn() }}
             route={{ params: {} }}
           />
         </NavigationContainer>
@@ -80,7 +80,7 @@ describe("HomeScreen", () => {
       >
         <NavigationContainer>
           <HomeScreen
-            navigation={{ navigate: jest.fn() }}
+            navigation={{ setParams: jest.fn() }}
             route={{ params: { redemptionType: "redeemed" } }}
           />
         </NavigationContainer>
@@ -108,7 +108,7 @@ describe("HomeScreen", () => {
       >
         <NavigationContainer>
           <HomeScreen
-            navigation={{ navigate: mockNavigate }}
+            navigation={{ setParams: mockNavigate }}
             route={{ params: {} }}
           />
         </NavigationContainer>
@@ -117,13 +117,13 @@ describe("HomeScreen", () => {
 
     const notRedeemedButton = getByText("ganados");
     fireEvent.press(notRedeemedButton);
-    expect(mockNavigate).toHaveBeenCalledWith(RouteNames.HOME, {
+    expect(mockNavigate).toHaveBeenCalledWith({
       redemptionType: "not redeemed",
     });
 
     const redeemedButton = getByText("canjeados");
     fireEvent.press(redeemedButton);
-    expect(mockNavigate).toHaveBeenCalledWith(RouteNames.HOME, {
+    expect(mockNavigate).toHaveBeenCalledWith({
       redemptionType: "redeemed",
     });
   });

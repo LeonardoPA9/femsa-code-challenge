@@ -30,7 +30,7 @@ const MainNavigation = ({ onReady }) => {
             headerStyle: {
               backgroundColor: GlobalStyles.colors.accent,
             },
-            headerLargeTitleStyle: { fontSize: 32 },
+            headerLargeTitleStyle: { fontSize: 30 },
           })}
           name={RouteNames.PRODUCT_DETAILS}
           component={ProductDetails}

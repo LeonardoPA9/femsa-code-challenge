@@ -1,29 +1,28 @@
-import { View, StyleSheet } from "react-native";
-import AvenirText from "../ui/AvenirText";
-import AvenirBoldText from "../ui/AvenirBoldText";
+import { View, StyleSheet, Text } from "react-native";
+import {
+  primaryTextStyle,
+  secondaryFontStyle,
+} from "../../utils/constants/fonts";
+import { memo } from "react";
+import { getResponsiveStyle } from "../../utils/helpers/styleHelpers";
 
 const WelcomeMessage = ({ username }) => {
   return (
     <View style={container}>
-      <AvenirBoldText style={mainText}>Bienvenido de vuelta!</AvenirBoldText>
-      <AvenirText style={userText}>{username}</AvenirText>
+      <Text style={primaryTextStyle}>Bienvenido de vuelta!</Text>
+      <Text style={secondaryFontStyle}>{username}</Text>
     </View>
   );
 };
 
-export default WelcomeMessage;
+export default memo(WelcomeMessage);
 
-const { container, mainText, userText } = StyleSheet.create({
+const { container } = StyleSheet.create({
   container: {
-    marginTop: 40,
-  },
-  mainText: {
-    lineHeight: 32,
-    fontSize: 25,
-    fontWeight: 800,
-  },
-  userText: {
-    fontSize: 20,
-    lineHeight: 27,
+    marginTop: getResponsiveStyle("height", {
+      xs: 20,
+      lg: 25,
+      xl: 30,
+    }),
   },
 });

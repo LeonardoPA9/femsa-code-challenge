@@ -56,7 +56,9 @@ describe("ProductsContext", () => {
       await result.current.getProducts();
     });
 
-    expect(result.current.products).toEqual(mocked_response);
+    expect(result.current.products).toEqual(
+      mocked_response.map(({ id, ...rest }) => ({ key: id, ...rest }))
+    );
   });
 
   it("handles errors and sets products state to an empty array", async () => {

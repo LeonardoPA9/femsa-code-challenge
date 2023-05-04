@@ -1,7 +1,6 @@
-import { useMemo } from "react";
+import { useCallback } from "react";
 
-const useDate = (date) => {
-  date = new Date(date);
+const useDate = () => {
   const months = [
     "Enero",
     "Febrero",
@@ -17,13 +16,12 @@ const useDate = (date) => {
     "Diciembre",
   ];
 
-  return useMemo(
-    () =>
-      `${date.getDate() + 1} de ${
-        months[date.getMonth()]
-      }, ${date.getFullYear()}`,
-    [date]
-  );
+  return useCallback((date) => {
+    const _date = new Date(date);
+    return `${_date.getUTCDate()} de ${
+      months[_date.getUTCMonth()]
+    }, ${_date.getUTCFullYear()}`;
+  }, []);
 };
 
 export default useDate;

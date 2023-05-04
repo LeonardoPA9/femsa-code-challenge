@@ -1,5 +1,8 @@
 {
   "expo": {
+    "extra": {
+      "API_BASE_URL": "https://6222994f666291106a29f999.mockapi.io/api/v1/"
+    },
     "name": "femsa-code-challenge",
     "slug": "femsa-code-challenge",
     "version": "1.0.0",
@@ -11,9 +14,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

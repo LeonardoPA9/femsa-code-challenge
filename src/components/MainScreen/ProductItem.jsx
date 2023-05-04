@@ -1,72 +1,72 @@
-import { View, StyleSheet, Image, Pressable } from "react-native";
-import AvenirBoldText from "../ui/AvenirBoldText";
-import AvenirText from "../ui/AvenirText";
-import useDate from "../../hooks/useDate";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableWithoutFeedback,
+  Text,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { GlobalStyles } from "../../utils/constants/colors";
-import { useMemo } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { RouteNames } from "../../utils/constants/routes";
+import { memo } from "react";
+import {
+  primaryTextStyle,
+  secondaryFontStyle,
+} from "../../utils/constants/fonts";
+import { getResponsiveStyle } from "../../utils/helpers/styleHelpers";
 
-const ProductItem = ({ createdAt, product, points, is_redemption, image }) => {
-  const formattedDate = useDate(createdAt);
-  const { navigate } = useNavigation();
-
-  const itemsBasedOnIsRedemption = useMemo(
-    () => ({
-      style: {
-        color: is_redemption
-          ? GlobalStyles.colors.error
-          : GlobalStyles.colors.success,
-      },
-      icon: is_redemption ? "-" : "+",
-    }),
-    [is_redemption]
-  );
-
-  const onPress = () => {
-    navigate(RouteNames.PRODUCT_DETAILS, { image, points, createdAt, product });
-  };
-
-  return (
-    <Pressable
-    testID="productItem"
-      onPress={onPress}
-      style={({ pressed }) => pressed && pressedStyle}
-    >
-      <View style={container}>
-        <View style={wrapper}>
-          <Image
+const ProductItem = ({
+  createdAt,
+  product,
+  points,
+  image,
+  onPress,
+  is_redemption,
+  iconConditionalStyle,
+  icon,
+}) => (
+  <TouchableWithoutFeedback
+    testID="product-item-touchable"
+    onPress={() =>
+      onPress({ image, points, createdAt, product, is_redemption })
+    }
+  >
+    <View style={container}>
+      <View style={wrapper}>
+        <Image
           testID="productImage"
-            style={imageStyle}
-            source={{
-              uri: image,
-            }}
-          />
-          <View style={infoContainer}>
-            <AvenirBoldText testID="productText" style={boldTextStyle}>
-              {product}
-            </AvenirBoldText>
-            <AvenirText testID="dateText" style={regularTextStyle}>
-              {formattedDate}
-            </AvenirText>
-          </View>
-        </View>
-        <View style={wrapper}>
-          <AvenirBoldText testID="pointsText" style={pointsStyle}>
-            <AvenirBoldText style={[iconStyle, itemsBasedOnIsRedemption.style]}>
-              {itemsBasedOnIsRedemption.icon}
-            </AvenirBoldText>
-            {points}
-          </AvenirBoldText>
-          <AntDesign name="right" size={15} color="black" />
+          style={imageStyle}
+          source={{
+            uri: image,
+          }}
+        />
+        <View style={infoContainer}>
+          <Text testID="productText" style={[primaryTextStyle, boldTextStyle]}>
+            {product}
+          </Text>
+          <Text
+            testID="dateText"
+            style={[secondaryFontStyle, regularTextStyle]}
+          >
+            {createdAt}
+          </Text>
         </View>
       </View>
-    </Pressable>
-  );
-};
+      <View style={wrapper}>
+        <Text
+          testID="pointsText"
+          style={[primaryTextStyle, boldTextStyle, pointsStyle]}
+        >
+          <Text style={[primaryTextStyle, iconStyle, iconConditionalStyle]}>
+            {icon}
+          </Text>
+          {points}
+        </Text>
+        <AntDesign name="right" size={15} color="black" />
+      </View>
+    </View>
+  </TouchableWithoutFeedback>
+);
 
-export default ProductItem;
+export default memo(ProductItem);
 
 const {
   container,
@@ -77,18 +77,12 @@ const {
   boldTextStyle,
   iconStyle,
   pointsStyle,
-  pressedStyle,
 } = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginVertical: 3,
-  },
-  pressedStyle: {
-    backgroundColor: GlobalStyles.colors.accent,
-    opacity: 0.4,
-    borderRadius: 8,
   },
   wrapper: {
     flexDirection: "row",
@@ -114,5 +108,8 @@ const {
   },
   pointsStyle: {
     marginRight: 8,
+    fontSize: getResponsiveStyle("height", {
+      xl: 15,
+    }),
   },
 });

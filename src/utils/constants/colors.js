@@ -1,3 +1,5 @@
+import { StyleSheet } from "react-native";
+
 export const GlobalStyles = Object.freeze({
   colors: {
     background: "#F8F8F8",
@@ -11,6 +13,17 @@ export const GlobalStyles = Object.freeze({
     white: "#ffffff",
   },
   boxShadow: {
-    primary: "gba(0, 0, 0, 0.5)",
+    primary: "black",
   },
+});
+
+export const primaryBoxShadow = StyleSheet.create({
+  shadowOffset: {
+    width: 2,
+    height: 4,
+  },
+  shadowOpacity: 0.5,
+  shadowRadius: 4,
+  shadowColor: GlobalStyles.boxShadow.primary,
+  elevation: 20,
 });

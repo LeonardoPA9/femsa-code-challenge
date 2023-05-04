@@ -1,27 +1,75 @@
-import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import React, { useCallback, memo } from "react";
+import { StyleSheet, View } from "react-native";
 import ProductItem from "./ProductItem";
 import { GlobalStyles } from "../../utils/constants/colors";
+import { useNavigation } from "@react-navigation/native";
+import { RouteNames } from "../../utils/constants/routes";
+import useDate from "../../hooks/useDate";
+import { FlashList } from "@shopify/flash-list";
+import { getResponsiveStyle } from "../../utils/helpers/styleHelpers";
 
 const ProductList = ({ products }) => {
+  const formatDate = useDate();
+  const { navigate } = useNavigation();
+
+  const itemBasedOnRedemption = useCallback(
+    (is_redemption) => ({
+      iconConditionalStyle: {
+        color: is_redemption
+          ? GlobalStyles.colors.error
+          : GlobalStyles.colors.success,
+      },
+      icon: is_redemption ? "-" : "+",
+    }),
+    []
+  );
+
+  const onPress = useCallback((product) => {
+    navigate(RouteNames.PRODUCT_DETAILS, product);
+  }, []);
+
+  const renderItem = useCallback(
+    ({ item }) => (
+      <ProductItem
+        {...{
+          ...item,
+          ...itemBasedOnRedemption(item.is_redemption),
+          createdAt: formatDate(item.createdAt),
+          onPress,
+        }}
+      />
+    ),
+    []
+  );
+
   return (
-    <FlatList
-      style={container}
-      data={products}
-      renderItem={({ item }) => <ProductItem {...item} />}
-      keyExtractor={(item) => item.id}
-    />
+    <View style={container}>
+      <FlashList
+        data={products}
+        renderItem={renderItem}
+        estimatedItemSize={55}
+      />
+    </View>
   );
 };
 
-export default ProductList;
+export default memo(ProductList);
 
 const { container } = StyleSheet.create({
   container: {
     backgroundColor: GlobalStyles.text.white,
-    marginTop: 20,
-    maxHeight: 250,
-    padding: 20,
+    marginTop: getResponsiveStyle("height", {
+      xs: 10,
+      lg: 15,
+      xl: 20,
+    }),
+    marginBottom: 10,
+    height: getResponsiveStyle("height", {
+      xs: 275,
+      lg: 290,
+      xl: 330,
+    }),
+    paddingHorizontal: 20,
     borderRadius: 15,
   },
 });
