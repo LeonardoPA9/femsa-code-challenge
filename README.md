@@ -4,8 +4,8 @@ This project has been built with react native and expo. Docs -> https://expo.dev
 
 In order to run it locally, you'd first need to:
 
-* If it's the first timeyou're running it, run yarn install in your terminal
-* If you have already run that command, then run yarn start in your terminal
+* If it's the first time you're running it, run **yarn install** in your terminal
+* If you have already run that command, then run **yarn start** in your terminal
 
 You should get a message like this once the process is done
 
