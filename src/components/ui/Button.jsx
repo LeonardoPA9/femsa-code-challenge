@@ -2,6 +2,7 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { memo } from "react";
 import { GlobalStyles } from "../../utils/constants/colors";
 import { primaryTextStyle } from "../../utils/constants/fonts";
+import { getResponsiveStyle } from "../../utils/helpers/styleHelpers";
 
 const CustomButton = ({ onPress, children }) => {
   return (
@@ -33,6 +34,10 @@ const { pressedStyle, button, buttonText, container } = StyleSheet.create({
     color: GlobalStyles.text.white,
     textAlign: "center",
     fontSize: 16,
+    lineHeight: getResponsiveStyle("height", {
+      xs: 25,
+      xl: 30,
+    }),
     textTransform: "capitalize",
   },
   pressedStyle: {
