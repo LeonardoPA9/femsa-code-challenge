@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Button from "../components/ui/Button";
 import OptimizedImage from "../components/ui/OptimizedImage";
-import { GlobalStyles, primaryBoxShadow } from "../utils/constants/colors";
+import { GlobalStyles } from "../utils/constants/colors";
 import { FontNames, primaryTextStyle } from "../utils/constants/fonts";
 import { getResponsiveStyle } from "../utils/helpers/styleHelpers";
 
@@ -12,10 +12,8 @@ const ProductDetails = ({ navigation, route }) => {
   return (
     <SafeAreaView style={safeAreaView}>
       <View style={container}>
-        <View style={[imageContainer, primaryBoxShadow]}>
-          <View style={shadowContainer}>
-            <OptimizedImage style={imageStyle} source={{ uri: image }} />
-          </View>
+        <View style={imageContainer}>
+          <OptimizedImage style={imageStyle} source={{ uri: image }} />
         </View>
         <View style={textSectionContainer}>
           <Text

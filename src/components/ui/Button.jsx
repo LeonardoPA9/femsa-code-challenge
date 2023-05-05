@@ -1,8 +1,7 @@
-import { View, Pressable, StyleSheet } from "react-native";
+import { View, Pressable, StyleSheet, Text } from "react-native";
 import { memo } from "react";
 import { GlobalStyles } from "../../utils/constants/colors";
-import CustomFontText from "./CustomFontText";
-import { FontNames } from "../../utils/constants/fonts";
+import { primaryTextStyle } from "../../utils/constants/fonts";
 
 const CustomButton = ({ onPress, children }) => {
   return (
@@ -12,12 +11,7 @@ const CustomButton = ({ onPress, children }) => {
         onPress={onPress}
       >
         <View style={button}>
-          <CustomFontText
-            fontName={FontNames["avenir-bold"]}
-            style={buttonText}
-          >
-            {children}
-          </CustomFontText>
+          <Text style={[primaryTextStyle, buttonText]}>{children}</Text>
         </View>
       </Pressable>
     </View>
@@ -32,12 +26,13 @@ const { pressedStyle, button, buttonText, container } = StyleSheet.create({
   },
   button: {
     borderRadius: 10,
-    paddingVertical: 15,
+    paddingVertical: 12,
     backgroundColor: GlobalStyles.colors.primary,
   },
   buttonText: {
     color: GlobalStyles.text.white,
     textAlign: "center",
+    fontSize: 16,
     textTransform: "capitalize",
   },
   pressedStyle: {
