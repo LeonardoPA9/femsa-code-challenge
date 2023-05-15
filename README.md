@@ -13,9 +13,9 @@ You should get a message like this once the process is done
 
 Follow its instructions and be ready to roll.
 
-Bellow you'll find the preview images for the project, they are screenshots taken in iOS and android Simulator devices.
+Below you'll find the preview images for the project; they are screenshots taken on iOS and Android simulator devices.
 
-For iOS, the deviced selected screenshots is an iPhone 14 Pro Max.
+For iOS, the device selected for the screenshots is an iPhone 14 Pro Max.
 
 For android we have two devices, which are the Pixel 4 and Pixel 2.
 
